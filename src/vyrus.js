@@ -1,9 +1,9 @@
 // Get Dataset
 (async function () {
-    const fetchAssociations = await fetch("./dataset/disease_symptom_associations.json");
+    const fetchAssociations = await fetch("https://cdn.jsdelivr.net/gh/sripkunda/vyrus@latest/src/dataset/disease_symptom_associations.json");
     associations = await fetchAssociations.json();
 
-    const fetchInformation = await fetch("./dataset/disease_information.json");
+    const fetchInformation = await fetch("https://cdn.jsdelivr.net/gh/sripkunda/vyrus@latest/src/dataset/disease_information.json");
     information = await fetchInformation.json();
 })();
 
