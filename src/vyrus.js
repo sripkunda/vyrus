@@ -3,7 +3,7 @@
     const fetchAssociations = await fetch("https://cdn.jsdelivr.net/gh/sripkunda/vyrus@latest/src/dataset/disease_symptom_associations.json");
     associations = await fetchAssociations.json();
 
-    const fetchInformation = await fetch("https://cdn.jsdelivr.net/gh/sripkunda/vyrus@latest/src/dataset/disease_information.json");
+    const fetchInformation = await fetch("./dataset/disease_information.json");
     information = await fetchInformation.json();
 })();
 
@@ -12,16 +12,16 @@ class Vyrus {
         const possibleConditions = {};
         const matchedSymptoms = [];
     
-        function addConditions(symptom) {
+        function addConditions(symptom, weight = 1) {
             if (!symptom) return;
             const conditions = associations[symptom];
             for (const conditionObj of conditions) {
                 const conditionName = conditionObj;
                 if (conditionName in possibleConditions) {
-                    possibleConditions[conditionName]++;
+                    possibleConditions[conditionName] += weight;
                 }
                 else {
-                    possibleConditions[conditionName] = 1;
+                    possibleConditions[conditionName] = weight;
                 }
             }
         }
@@ -44,6 +44,7 @@ class Vyrus {
                 }
             }
         }
+        console.log(possibleConditions);
         return [... new Set(Object.keys(possibleConditions).sort((a, b) => possibleConditions[b] - possibleConditions[a]))];
     }
 
