@@ -3,7 +3,7 @@
     const fetchAssociations = await fetch("https://cdn.jsdelivr.net/gh/sripkunda/vyrus@latest/src/dataset/disease_symptom_associations.json");
     associations = await fetchAssociations.json();
 
-    const fetchInformation = await fetch("https://cdn.jsdelivr.net/gh/sripkunda/vyrus@latest/src/dataset/dataset/disease_information.json");
+    const fetchInformation = await fetch("https://cdn.jsdelivr.net/gh/sripkunda/vyrus@latest/src/dataset/disease_information.json");
     information = await fetchInformation.json();
 })();
 
