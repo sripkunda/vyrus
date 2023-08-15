@@ -113,7 +113,8 @@ class Vyrus {
       static queryToConditionInformation(query, short=true, duplicates=false) {
         const info = Vyrus.getPossibleConditions(query).map(x => Vyrus.getConditionInformation(x, short)).filter(Boolean);
         const indices = [];
-        return [...new Set(info.map((i, x) => {
+
+        return duplicates ? info : [...new Set(info.map((i, x) => {
             indices.push(i);
             return i.name;
         }))].map((x, i) => info[i]);
