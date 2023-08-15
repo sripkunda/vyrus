@@ -44,7 +44,6 @@ class Vyrus {
                 }
             }
         }
-        console.log(possibleConditions);
         return [... new Set(Object.keys(possibleConditions).sort((a, b) => possibleConditions[b] - possibleConditions[a]))];
     }
 
